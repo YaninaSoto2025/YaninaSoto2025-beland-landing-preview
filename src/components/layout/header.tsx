@@ -15,7 +15,7 @@ import { Logo } from "@/components/ui/logo";
 
 const routes = [
   { href: "/", label: "Home" },
-  { href: "/#caas", label: "CaaS" },
+  { href: "/#CaaSPackages", label: "CaaS" },
   { href: "/conexion", label: "Conexión" },
   { href: "/about", label: "Nosotros" },
   { href: "/blog", label: "Blog" },
@@ -61,7 +61,7 @@ export function Header() {
     const isActive = 
       (route.href === "/" && pathname === "/") || 
       (pathname === "/" && `/#${activeSection}` === route.href) ||
-      (pathname === route.href) || // <--- AGREGA ESTA LÍNEA
+      (pathname === route.href) || 
       (route.href !== "/" && !route.href.startsWith("/#") && pathname.startsWith(route.href));
 
               return (
