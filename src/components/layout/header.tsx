@@ -15,7 +15,7 @@ import { Logo } from "@/components/ui/logo";
 
 const routes = [
   { href: "/", label: "Home" },
-  { href: "/#CaaSPackages", label: "CaaS" },
+  { href: "/#CaaSPackages", label: "CaaS" }, 
   { href: "/conexion", label: "Conexión" },
   { href: "/about", label: "Nosotros" },
   { href: "/blog", label: "Blog" },
@@ -24,7 +24,7 @@ const routes = [
 export function Header() {
   
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); 
 
   const activeSection = useScrollSpy(
     routes
@@ -51,18 +51,18 @@ export function Header() {
     <header className="fixed top-0 z-50 w-full border-b-[0.5px] border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 md:h-16 items-center justify-between">
         
-        {/* LOGO: Desktop y Mobile */}
+        {/*  Desktop y Mobile */}
         <div className="flex items-center">
           <Logo />
           
           {/* NAVEGACIÓN DESKTOP */}
-<nav className="ml-10 hidden md:flex items-center space-x-8 text-sm font-medium">
-  {routes.map((route) => {
-    const isActive = 
-      (route.href === "/" && pathname === "/") || 
-      (pathname === "/" && `/#${activeSection}` === route.href) ||
-      (pathname === route.href) || 
-      (route.href !== "/" && !route.href.startsWith("/#") && pathname.startsWith(route.href));
+          <nav className="ml-10 hidden md:flex items-center space-x-8 text-sm font-medium">
+            {routes.map((route) => {
+              const isActive = 
+                (route.href === "/" && pathname === "/") || 
+                (pathname === "/" && `/#${activeSection}` === route.href) ||
+                (pathname === route.href) || 
+                (route.href !== "/" && !route.href.startsWith("/#") && pathname.startsWith(route.href));
 
               return (
                 <Link
@@ -82,13 +82,14 @@ export function Header() {
           </nav>
         </div>
 
-        {/* ACCIONES DERECHA (Theme + Menú Mobile) */}
+        {/* ACCIONES DERECHA  */}
         <div className="flex items-center gap-2">
           <ThemeToggle />
           
           {/* MENÚ MOBILE */}
           <div className="md:hidden">
-            <Sheet>
+            {/* Conectamos el estado 'open' al Sheet */}
+            <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="sm" className="h-9 w-9 px-0">
                   <Menu className="h-5 w-5" />
@@ -103,7 +104,10 @@ export function Header() {
                       <Link
                         key={route.href}
                         href={route.href}
-                        onClick={(e) => handleScroll(e, route.href)}
+                        onClick={(e) => {
+                          handleScroll(e, route.href);
+                          setOpen(false); 
+                        }}
                         className={cn(
                           "text-lg font-semibold transition-colors hover:text-primary",
                           (pathname === route.href || (pathname === "/" && `/#${activeSection}` === route.href))

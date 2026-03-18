@@ -1,9 +1,9 @@
-import Hero from "../components/home/Hero";
-import ImpactStats from "../components/home/ImpactStats";
-import CaaSPackages from "../components/home/CaaSPackages";
-import Features from "../components/home/Features";
-import EcosistemaBeland from "../components/home/EcosistemaBeland";
-import VideoCarousel from "../components/home/VideoCarousel";
+import Hero from "../components/home/hero";
+import ImpactStats from "../components/home/impactstats";
+import CaaSPackages from "../components/home/caaspackages";
+import Features from "../components/home/features";
+import EcosistemaBeland from "../components/home/ecosistemabeland";
+import VideoCarousel from "../components/home/videocarousel";
 
 
   export default function Home() {
